@@ -1,6 +1,25 @@
-# Welcome to your Expo app 👋
+## Project Overview
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Injury Recovery Assistant is a React Native app designed to aid users in their recovery journey. It features a progress tracker to monitor recovery milestones, a user rating system for physiotherapists, and personalized articles for guidance. A unique shared prescription interface allows seamless collaboration between patients and physiotherapists.
+
+## Key Features
+
+1. Progress Tracker
+2. User Rating System
+3. Personalized Articles
+4. Shared Prescription
+
+## Tech Stack
+
+- React Native
+- Firebase
+
+## Contributors
+
+- James Sembukuttiarachchi - https://github.com/JamesSembukuttiarachchi
+- Rakindu Marambe - https://github.com/RakinduM
+- Amaya Fernando - https://github.com/amaya2509
+- Hiruni Fernando - https://github.com/fernandoMHSJ
 
 ## Get started
 
