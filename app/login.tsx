@@ -20,6 +20,7 @@ const LoginScreen: React.FC = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         Alert.alert('Success', `Welcome back, ${user?.email}`);
+        router.push("/home")
       })
       .catch((error) => {
         Alert.alert('Login Error', error.message);
