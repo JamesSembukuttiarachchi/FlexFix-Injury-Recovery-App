@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
+import { useRouter } from "expo-router"; // Import the useRouter hook
 import CustomTextInput from "../components/CustomTextInput";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
@@ -13,6 +14,8 @@ const SignUpScreen: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const router = useRouter(); // Initialize router to navigate
 
   const handleSignUp = async () => {
     if (name === "" || email === "" || phoneNumber === "" || password === "") {
@@ -89,6 +92,7 @@ const SignUpScreen: React.FC = () => {
           </TouchableOpacity>
         </View>
       </View>
+
       <TouchableOpacity
         className="bg-orange-500 py-4 rounded-lg items-center mb-6"
         onPress={handleSignUp}
@@ -103,13 +107,13 @@ const SignUpScreen: React.FC = () => {
       </View>
 
       <TouchableOpacity className="flex-row justify-center items-center border border-gray-300 py-4 rounded-lg mb-6">
-        <FontAwesome name="google" size={24} color="black" />
-        <Text className="ml-2 font-bold text-base">Signup with Google</Text>
+        <FontAwesome name="google" size={24} color="" />
+        <Text className="ml-2 font-bold text-base text-gray-500">Signup with Google</Text>
       </TouchableOpacity>
 
       <Text className="text-center text-gray-500">
         Already have an account?{" "}
-        <Text className="text-orange-500 font-bold">Login</Text>
+        <Text className="text-orange-500 font-bold" onPress={() => router.push("/login")}>Login</Text>
       </Text>
     </View>
   );

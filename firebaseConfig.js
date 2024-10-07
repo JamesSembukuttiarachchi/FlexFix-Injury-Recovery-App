@@ -4,15 +4,16 @@ import { getFirestore } from "firebase/firestore";
 import {getStorage} from "firebase/storage";
 import { getAuth } from "firebase/auth";
 import Constants from 'expo-constants';
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: Constants.manifest.extra.firebaseConfig.apiKey,
-  authDomain: Constants.manifest.extra.firebaseConfig.authDomain,
-  projectId: Constants.manifest.extra.firebaseConfig.projectId,
-  storageBucket: Constants.manifest.extra.firebaseConfig.storageBucket,
-  messagingSenderId: Constants.manifest.extra.firebaseConfig.messagingSenderId,
-  appId: Constants.manifest.extra.firebaseConfig.appId,
-  measurementId: Constants.manifest.extra.firebaseConfig.measurementId,
+  apiKey: "AIzaSyCvAtLeZdI1J5u92414a15FdV7-RlbNWvo",
+  authDomain: "flexfix-366ff.firebaseapp.com",
+  projectId: "flexfix-366ff",
+  storageBucket: "flexfix-366ff.appspot.com",
+  messagingSenderId: "760494243623",
+  appId: "1:760494243623:web:880e2cfddfa784330f7302",
+  measurementId: "G-HXXK388MWS"
 };
 
 // Initialize Firebase
