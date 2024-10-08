@@ -68,7 +68,7 @@ const BookingScreen = () => {
 
         <TouchableOpacity
           className="bg-orange-500 py-3 rounded-2xl items-center mb-6 w-3/4 self-center"
-          onPress={() => router.push("/Booking/booking")}
+          onPress={() => router.push("/(tabs)/home/bookings/booking")}
         >
           <Text className="text-white font-bold text-base">Book Appointment</Text>
         </TouchableOpacity>

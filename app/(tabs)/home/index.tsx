@@ -1,12 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import vector2 from "@/assets/Vector 2.png";
 import recommended2 from "@/assets/Recommended 2.png";
 import { useRouter, useNavigation } from "expo-router";
+import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
+import { getFirestore, doc, getDoc } from "firebase/firestore"; // Firestore functions
+
+interface UserData {
+  name: string;
+  isAdmin?: boolean; // Optional in case it's not always there
+}
+
 
 const Home: React.FC = () => {
+  const [user, setUser] = useState<User | null>(null); // Firebase User or null
+  const [username, setUsername] = useState<string>("");
+  const auth = getAuth();
+  const db = getFirestore(); // Firestore instance
+
   const router = useRouter();
   const navigation = useNavigation();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser); // User is logged in
+
+        let displayName = currentUser.displayName || "";
+        try {
+          // Fetch admin status from Firestore
+          const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+          if (userDoc.exists()) {
+            const userData = userDoc.data() as UserData;
+            displayName = userData.name || displayName; // Use name from Firestore if available
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+
+        setUsername(displayName);
+      } else {
+        // User is logged out
+        setUser(null);
+        setUsername("");
+      }
+    });
+
+    return () => unsubscribe(); // Clean up subscription on unmount
+  }, []);
+
+
   return (
     <View className="flex-1 bg-white">
       {/* Header Section */}
@@ -14,7 +57,7 @@ const Home: React.FC = () => {
         <Image source={vector2} className="absolute" />
         <View className="rounded-b-lg p-4 flex-row justify-between items-center top-[50px]">
           <Text className="text-black text-2xl font-bold">
-            Welcome John Smith
+            Welcome {username}
           </Text>
           <View className="flex-row items-center">
             <Image
@@ -41,7 +84,7 @@ const Home: React.FC = () => {
             <Text className="text-black font-bold">Book a Physio</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="flex-1 bg-orange-200 p-4 rounded-lg items-center justify-center ml-2">
+          <TouchableOpacity className="flex-1 bg-orange-200 p-4 rounded-lg items-center justify-center ml-2" onPress={() => router.push('/home/recovery/plans')}>
             <Image
               source={{
                 uri: "https://img.icons8.com/fluency/48/000000/yoga.png",

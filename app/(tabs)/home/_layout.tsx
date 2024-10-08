@@ -13,6 +13,26 @@ const HomeLayout = () => {
         name="bookings/bookPhy"
         options={{ headerShown: false}} // Booking screen
       />
+      <Stack.Screen
+        name="bookings/booking"
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="bookings/payment"
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="bookings/success"
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="recovery/plans"
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="recovery/planDetails"
+        options={{headerShown: false}}
+      />
     </Stack>
   )
 }
