@@ -33,6 +33,10 @@ const HomeLayout = () => {
         name="recovery/planDetails"
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="points/points"
+        options={{headerShown: false}}
+      />
     </Stack>
   )
 }

@@ -106,7 +106,7 @@ const Home: React.FC = () => {
             <Text className="text-black font-bold">Prescription</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="flex-1 bg-purple-200 p-4 rounded-lg items-center justify-center ml-2">
+          <TouchableOpacity className="flex-1 bg-purple-200 p-4 rounded-lg items-center justify-center ml-2" onPress={() => router.push('/home/points/points')}>
             <Image
               source={{
                 uri: "https://img.icons8.com/fluency/48/000000/book.png",
