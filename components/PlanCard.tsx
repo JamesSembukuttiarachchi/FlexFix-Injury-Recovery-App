@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Image, TouchableOpacity, Text } from 'react-native';
+import React from "react";
+import { View, Image, TouchableOpacity, Text, Pressable } from "react-native";
 
 interface PlanCardProps {
   title: string;
@@ -8,12 +8,18 @@ interface PlanCardProps {
   onStartPress: () => void;
 }
 
-const PlanCard: React.FC<PlanCardProps> = ({ title, duration, imageUrl, onStartPress }) => {
+const PlanCard: React.FC<PlanCardProps> = ({
+  title,
+  duration,
+  imageUrl,
+  onStartPress,
+}) => {
   return (
     <View className="flex flex-row items-center bg-gray-100 p-4 rounded-2xl shadow-md mb-4">
       <Image source={{ uri: imageUrl }} className="w-16 h-16 rounded-lg mr-4" />
       <View className="flex-1">
         <Text className="text-lg font-medium">{title}</Text>
+
         <Text className="text-gray-600">{duration}</Text>
       </View>
       <TouchableOpacity
