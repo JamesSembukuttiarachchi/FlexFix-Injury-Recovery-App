@@ -22,7 +22,9 @@ const BookingPaymentScreen = () => {
         className="flex-grow bg-[#656565] py-10"
       >
         {/* Payment Title */}
-        <Text className="text-center text-2xl font-bold mb-8 text-white">Payment</Text>
+        <Text className="text-center text-2xl font-bold mb-8 text-white">
+          Payment
+        </Text>
         {/* Payment Amount */}
         <Text className="text-center text-5xl font-bold text-white mb-8 mt-14">
           $120.00
@@ -102,7 +104,10 @@ const BookingPaymentScreen = () => {
       </ScrollView>
       {/* Pay Now Button fixed at the bottom */}
       <View className="absolute bottom-0 left-0 right-0 p-4 bg-gray-200">
-        <TouchableOpacity className="bg-orange-500 py-4 rounded-lg items-center" onPress={() => router.push("/(tabs)/home/bookings/success")}>
+        <TouchableOpacity
+          className="bg-orange-500 py-4 rounded-lg items-center"
+          onPress={() => router.push("/(tabs)/home/bookings/success")}
+        >
           <Text className="text-white font-bold text-base">Pay Now</Text>
         </TouchableOpacity>
       </View>

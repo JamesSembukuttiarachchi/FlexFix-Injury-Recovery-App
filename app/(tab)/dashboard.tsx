@@ -1,13 +1,10 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import vector2 from "@/assets/Vector 2.png";
+import { router } from "expo-router";
 
 const dashboard = () => {
-  const currentDate = new Date().toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+
 
   return (
     <View className="flex-1 bg-white">
@@ -36,7 +33,7 @@ const dashboard = () => {
 
       {/* Main Buttons */}
       <View className="flex-1 px-6 mt-8 space-y-6">
-        <TouchableOpacity className="bg-orange-400 rounded-lg py-8">
+        <TouchableOpacity className="bg-orange-400 rounded-lg py-8" onPress={() => router.push("/(tab)/appointments")}>
           <Text className="text-center text-lg font-semibold text-black">
             View Appointments
           </Text>
