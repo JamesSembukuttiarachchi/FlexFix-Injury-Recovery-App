@@ -6,6 +6,7 @@ import Fontisto from '@expo/vector-icons/Fontisto';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 const TabsLayout = () => {
+
   return (
     <Tabs
       screenOptions={{ headerShown: false, tabBarActiveTintColor: "#BB32FF" }}

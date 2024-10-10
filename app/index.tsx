@@ -38,6 +38,7 @@ const SignUpScreen: React.FC = () => {
         name: name,
         email: email,
         phoneNumber: phoneNumber,
+        userType: "physiotherapist",
         createdAt: new Date(),
       });
 

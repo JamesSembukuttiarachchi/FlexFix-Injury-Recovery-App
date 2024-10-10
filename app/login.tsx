@@ -4,8 +4,9 @@ import { useRouter } from "expo-router";
 import CustomTextInput from "../components/CustomTextInput";
 import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { auth } from '../firebaseConfig'; // Adjust path if needed
+import { auth, db } from '../firebaseConfig'; // Adjust path if needed
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore"; // Import Firestore functions
 
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -17,10 +18,26 @@ const LoginScreen: React.FC = () => {
 
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         const user = userCredential.user;
         Alert.alert('Success', `Welcome back, ${user?.email}`);
-        router.push("/home")
+
+        // Fetch userType from Firestore
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          const userType = userDoc.data().userType;
+
+          // Navigate based on userType
+          if (userType === "patient") {
+            router.push("/home"); // Redirect to home for patients
+          } else if (userType === "physiotherapist") {
+            router.push("/(tab)/dashboard"); // Redirect to dashboard for physiotherapists
+          } else {
+            Alert.alert("Error", "Unknown user type");
+          }
+        } else {
+          Alert.alert("Error", "User type not found");
+        }
       })
       .catch((error) => {
         Alert.alert('Login Error', error.message);
