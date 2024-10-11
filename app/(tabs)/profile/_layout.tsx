@@ -2,19 +2,19 @@ import { View, Text } from "react-native";
 import React from "react";
 import { Stack } from "expo-router";
 
-const AppointmentsLayout = () => {
+const ArticleLayout = () => {
   return (
     <Stack>
       <Stack.Screen
-        name="index"
+        name="profile"
         options={{ headerShown: false }} // Home screen
       />
       <Stack.Screen
-        name="create"
+        name="update"
         options={{ headerShown: false }} // Home screen
       />
     </Stack>
   );
 };
 
-export default AppointmentsLayout;
+export default ArticleLayout;

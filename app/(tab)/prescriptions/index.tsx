@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -6,18 +6,51 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
+  ActivityIndicator,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import vector2 from "@/assets/Vector 2.png";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/firebaseConfig";
 
-const prescriptions = [
-  { id: "1", name: "Jason Momo", lastUpdated: "12-04-2024", time: "07.00 PM" },
-  { id: "2", name: "John Smith", lastUpdated: "12-04-2024", time: "07.00 PM" },
-];
+// const prescriptions = [
+//   { id: "1", name: "Jason Momo", lastUpdated: "12-04-2024", time: "07.00 PM" },
+//   { id: "2", name: "John Smith", lastUpdated: "12-04-2024", time: "07.00 PM" },
+// ];
 
 const PrescriptionFinderScreen = () => {
+    const [prescriptions, setPrescriptions] = useState([]);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
+
+  // Fetch prescriptions from Firestore
+  useEffect(() => {
+    const fetchPrescriptions = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "prescriptions"));
+        const prescriptionsList = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setPrescriptions(prescriptionsList);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching prescriptions: ", error);
+        setLoading(false);
+      }
+    };
+
+    fetchPrescriptions();
+  }, []);
+
+  if (loading) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" color="#f97316" />
+      </View>
+    );
+  }
 
   return (
     <View className="flex-1 bg-gray-100">
@@ -51,11 +84,11 @@ const PrescriptionFinderScreen = () => {
         renderItem={({ item }) => (
           <View className="flex-row justify-between items-center bg-white p-4 mb-3 mx-4 rounded-lg shadow-lg">
             <View>
-              <Text className="text-lg font-bold">{item.name}</Text>
+              <Text className="text-lg font-bold">{item.patientName}</Text>
               <Text className="text-gray-500">
-                Last Updated {item.lastUpdated}
+                Last Updated 12-04-2024
               </Text>
-              <Text className="text-gray-500">{item.time}</Text>
+              <Text className="text-gray-500">07.00 PM</Text>
             </View>
             <TouchableOpacity
               className="bg-orange-500 px-4 py-2 rounded-lg"
@@ -70,7 +103,7 @@ const PrescriptionFinderScreen = () => {
       {/* Floating Add Button */}
       <TouchableOpacity
         className="absolute bottom-10 right-10 bg-orange-500 w-14 h-14 rounded-full items-center justify-center shadow-lg"
-        // onPress={() => router.push('/add-prescription')}
+        onPress={() => router.push('/(tab)/prescriptions/create')}
       >
         <Ionicons name="add" size={32} color="white" />
       </TouchableOpacity>

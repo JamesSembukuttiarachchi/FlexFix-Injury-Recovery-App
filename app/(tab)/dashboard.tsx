@@ -32,7 +32,7 @@ const dashboard = () => {
       </View>
 
       {/* Main Buttons */}
-      <View className="flex-1 px-6 mt-8 space-y-6">
+      <View className="flex-1  px-6 mt-8 space-y-6">
         <TouchableOpacity className="bg-orange-400 rounded-lg py-8" onPress={() => router.push("/(tab)/appointments")}>
           <Text className="text-center text-lg font-semibold text-black">
             View Appointments

@@ -13,6 +13,10 @@ const ArticleLayout = () => {
         name="articleDetails"
         options={{ headerShown: false }} // Home screen
       />
+      <Stack.Screen
+        name="bookmarks"
+        options={{ headerShown: false }} // Home screen
+      />
     </Stack>
   );
 };

@@ -69,7 +69,7 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="prescriptions/index" // Ensure there's a corresponding screen component
+        name="prescriptions" // Ensure there's a corresponding screen component
         options={{
           tabBarLabel: "Prescriptions",
           tabBarIcon: ({ color }) => (

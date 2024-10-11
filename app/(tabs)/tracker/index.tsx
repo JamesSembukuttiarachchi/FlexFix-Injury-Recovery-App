@@ -24,15 +24,15 @@ const ProgressTracker = () => {
     if (item.type === "piechart") {
       return (
         <View
-          style={{ width, alignItems: "center", justifyContent: "center" }}
+          style={{ width, alignItems: "center", justifyContent: "center", paddingRight: 80 }}
           className="h-72"
         >
           {/* Center the pie chart */}
           <View className="flex items-center justify-center">
             <ProgressCircle
               percent={60}
-              radius={60}
-              borderWidth={8}
+              radius={80}
+              borderWidth={10}
               color="#ffa500"
               shadowColor="#e5e5e5"
               bgColor="#fff"
@@ -46,14 +46,14 @@ const ProgressTracker = () => {
     } else if (item.type === "tasks") {
       return (
         <View
-          style={{ width, alignItems: "center", justifyContent: "center" }}
+        style={{ width, padding: 30 }} // Add padding to make space for text
           className="h-72 bg-gradient-to-b from-orange-300 to-orange-500 rounded-xl p-6"
         >
-          <Text className="text-lg font-semibold text-black mb-4">Upcoming Tasks</Text>
-          <View className="flex items-start space-y-2">
-            <Text className="text-base text-white">• Lorem Ipsum asd loerevn</Text>
-            <Text className="text-base text-white">• Lorem Ipsum asd loerevn</Text>
-            <Text className="text-base text-white">• Lorem Ipsum asd loerevn</Text>
+          <Text className="text-lg font-semibold text-black mb-6">Upcoming Tasks</Text>
+          <View className="flex space-y-2 pr-[70px]">
+            <Text className="text-md font-semibold text-black mb-4">• Lorem Ipsum asd loerevn</Text>
+            <Text className="text-md font-semibold text-black mb-4">• Lorem Ipsum asd loerevn</Text>
+            <Text className="text-md font-semibold text-black mb-4">• Lorem Ipsum asd loerevn</Text>
           </View>
         </View>
       );

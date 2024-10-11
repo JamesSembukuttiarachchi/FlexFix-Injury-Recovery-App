@@ -10,7 +10,7 @@ const sampleRecoveryPlans = [
     id: "1",
     title: "Sprained Ankle",
     duration: "4 weeks",
-    imageUrl: "https://via.placeholder.com/60",
+    imageUrl: "https://blog.eibe.co.uk/wp-content/uploads/2021/04/EIB_Blog_Calistenics_1.jpg",
   },
   {
     id: "2",

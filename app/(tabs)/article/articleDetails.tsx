@@ -1,9 +1,11 @@
-import React from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import React from "react";
+import { View, Text, Image, ScrollView } from "react-native";
+import { useLocalSearchParams } from "expo-router";
+import BackButton from "@/components/BackButton";
 
 const ArticleDetail = () => {
-  const { title, image, author, time, readTime, content } = useLocalSearchParams();
+  const { title, image, author, time, readTime, content } =
+    useLocalSearchParams();
   const articleTitle = Array.isArray(title) ? title[0] : title;
   const articleImage = Array.isArray(image) ? image[0] : image;
   const articleAuthor = Array.isArray(author) ? author[0] : author;
@@ -12,14 +14,18 @@ const ArticleDetail = () => {
   const articleContent = Array.isArray(content) ? content[0] : content;
 
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView className="flex-1 bg-gray-100">
+      <View className="mt-5 mx-4">
+        <BackButton />
+      </View>
+
       {/* Article Title */}
       <View className="px-4 py-6">
         <Text className="text-2xl font-bold text-black">{articleTitle}</Text>
       </View>
 
       {/* Article Image */}
-      <Image source={{ uri: articleImage }} className="w-full h-60" />
+      <Image source={{ uri: articleImage }} className="mx-3 rounded-lg h-60" />
 
       {/* Article Content */}
       <View className="px-4 py-6">
@@ -29,7 +35,9 @@ const ArticleDetail = () => {
       {/* Author and Read Time */}
       <View className="px-4 py-4">
         <Text className="text-gray-500">By {articleAuthor}</Text>
-        <Text className="text-gray-500">{articleTime} | {articleReadTime}</Text>
+        <Text className="text-gray-500">
+          {articleTime} | {articleReadTime}
+        </Text>
       </View>
     </ScrollView>
   );
