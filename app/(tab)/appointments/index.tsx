@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -6,25 +6,61 @@ import {
   FlatList,
   TextInput,
   Image,
+  ActivityIndicator,
 } from "react-native";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import vector2 from "@/assets/Vector 2.png";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/firebaseConfig"; // Adjust the path based on your project structure
 
-const appointments = [
-  { id: "1", name: "Jason Momo", date: "12-04-2024", time: "07.00 PM" },
-  { id: "2", name: "Jason Momo", date: "12-04-2024", time: "07.00 PM" },
-  { id: "3", name: "Jason Momo", date: "12-04-2024", time: "07.00 PM" },
-];
+// const appointments = [
+//   { id: "1", name: "Jason Momo", date: "12-04-2024", time: "07.00 PM" },
+//   { id: "2", name: "Jason Momo", date: "12-04-2024", time: "07.00 PM" },
+//   { id: "3", name: "Jason Momo", date: "12-04-2024", time: "07.00 PM" },
+// ];
 
 const AppointmentsScreen = () => {
   const [activeTab, setActiveTab] = useState<string>("upcoming");
   const [searchText, setSearchText] = useState<string>("");
+  const [appointments, setAppointments] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
   const router = useRouter();
 
   const handleTabSwitch = (tab: string) => {
     setActiveTab(tab);
   };
+
+    // Fetch appointments from Firestore
+    const fetchAppointments = async () => {
+        try {
+          const querySnapshot = await getDocs(collection(db, "appointments"));
+          const appointmentsData = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          setAppointments(appointmentsData);
+        } catch (err) {
+          setError("Error fetching appointments");
+          console.error(err);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      useEffect(() => {
+        fetchAppointments();
+      }, []);
+
+      if (loading) {
+        return (
+          <View className="flex-1 justify-center items-center">
+            <ActivityIndicator size="large" color="#FFA500" />
+          </View>
+        );
+      }
 
   return (
     <View className="flex-1 bg-gray-100">
@@ -79,18 +115,20 @@ const AppointmentsScreen = () => {
 
       {/* Appointment List */}
       <FlatList
-        data={appointments}
+        data={appointments.filter((appointment) =>
+            appointment.fullName.toLowerCase().includes(searchText.toLowerCase())
+          )}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View className="flex-row justify-between items-center bg-white p-4 mb-3 mx-4 rounded-lg shadow-lg">
             <View>
-              <Text className="text-lg font-bold">{item.name}</Text>
+              <Text className="text-lg font-bold">{item.fullName}</Text>
               <Text className="text-gray-500">{item.date}</Text>
               <Text className="text-gray-500">{item.time}</Text>
             </View>
             <TouchableOpacity
               className="bg-orange-500 px-4 py-2 rounded-lg"
-              onPress={() => router.push("/")}
+              onPress={() => router.push(`/appointments/${item.id}`)}
             >
               <Text className="text-white font-bold">View</Text>
             </TouchableOpacity>
