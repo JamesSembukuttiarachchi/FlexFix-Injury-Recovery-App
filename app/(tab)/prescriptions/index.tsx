@@ -92,7 +92,7 @@ const PrescriptionFinderScreen = () => {
             </View>
             <TouchableOpacity
               className="bg-orange-500 px-4 py-2 rounded-lg"
-              //   onPress={() => router.push(`/prescription/${item.id}`)}
+               onPress={() => router.push(`/prescriptions/${item.id}`)}
             >
               <Text className="text-white font-bold">View</Text>
             </TouchableOpacity>

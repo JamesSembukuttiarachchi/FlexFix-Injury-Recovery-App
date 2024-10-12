@@ -13,6 +13,14 @@ const AppointmentsLayout = () => {
         name="create"
         options={{ headerShown: false }} // Home screen
       />
+      <Stack.Screen
+        name="[id]"
+        options={{ headerShown: false }} // Home screen
+      />
+      <Stack.Screen
+        name="update/[id]"
+        options={{ headerShown: false }} // Home screen
+      />
     </Stack>
   );
 };
