@@ -37,6 +37,22 @@ const HomeLayout = () => {
         name="points/points"
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="recovery"
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="recovery/saTask1"
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="recovery/saTask2"
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="recovery/saTask3"
+        options={{headerShown: false}}
+      />
     </Stack>
   )
 }

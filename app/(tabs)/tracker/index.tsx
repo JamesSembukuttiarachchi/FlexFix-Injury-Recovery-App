@@ -51,9 +51,9 @@ const ProgressTracker = () => {
         >
           <Text className="text-lg font-semibold text-black mb-6">Upcoming Tasks</Text>
           <View className="flex space-y-2 pr-[70px]">
-            <Text className="text-md font-semibold text-black mb-4">• Lorem Ipsum asd loerevn</Text>
-            <Text className="text-md font-semibold text-black mb-4">• Lorem Ipsum asd loerevn</Text>
-            <Text className="text-md font-semibold text-black mb-4">• Lorem Ipsum asd loerevn</Text>
+            <Text className="text-md font-semibold text-black mb-4">• Ankle Circles</Text>
+            <Text className="text-md font-semibold text-black mb-4">• Alphabet Writing</Text>
+            <Text className="text-md font-semibold text-black mb-4">• Toe Raises</Text>
           </View>
         </View>
       );
