@@ -34,7 +34,7 @@ const saTask1 = () => {
         />
 
         {/* Overview/Description */}
-        <Text className="text-lg font-semibold mb-4">Overview</Text>
+        <Text className="text-lg font-semibold mb-4">3 points</Text>
         <Text className="text-base text-gray-700">
           - Rest: Minimize movement of the ankle to avoid further injury. Avoid
           walking or putting any weight on the affected foot. Use crutches if

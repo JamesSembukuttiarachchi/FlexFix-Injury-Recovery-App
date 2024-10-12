@@ -34,7 +34,7 @@ const saTask1 = () => {
         />
 
         {/* Overview/Description */}
-        <Text className="text-lg font-semibold mb-4"></Text>
+        <Text className="text-lg font-semibold mb-4">4 points</Text>
         <Text className="text-base text-gray-700">
           The lower abdomen and hips are the most difficult areas of the body to
           reduce when we are on a diet. Even so, in this area, especially the
@@ -52,7 +52,7 @@ const saTask1 = () => {
         </TouchableOpacity>
         <TouchableOpacity
           className="bg-orange-500 w-2/5 py-4 rounded-lg items-center"
-          onPress={() => router.push("/(tabs)/home/")}
+          onPress={() => router.push("/(tabs)/home/points/points")}
         >
           <Text className="text-white font-bold text-base">FINISH</Text>
         </TouchableOpacity>

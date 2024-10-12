@@ -70,7 +70,7 @@ const AppointmentScreen: React.FC = () => {
         userId: user.uid, // Save the user ID as well
         createdAt: new Date(),
       });
-      Alert.alert("Success", "Appointment set successfully");
+      //Alert.alert("Success", "Appointment set successfully");
       router.push("/(tabs)/home/bookings/payment"); // Navigate to the home screen after setting the appointment
     } catch (e) {
       console.error("Error adding document: ", e);

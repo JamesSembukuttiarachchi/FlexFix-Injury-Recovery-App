@@ -34,7 +34,7 @@ const saTask1 = () => {
         />
 
         {/* Overview/Description */}
-        <Text className="text-lg font-semibold mb-4">Overview</Text>
+        <Text className="text-lg font-semibold mb-4">3 points</Text>
         <Text className="text-base text-gray-700">
           The lower abdomen and hips are the most difficult areas of the body to
           reduce when we are on a diet. Even so, in this area, especially the

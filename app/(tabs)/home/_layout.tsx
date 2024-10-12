@@ -53,6 +53,10 @@ const HomeLayout = () => {
         name="recovery/saTask3"
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="prescriptions/prescriptions"
+        options={{headerShown: false}}
+      />
     </Stack>
   )
 }

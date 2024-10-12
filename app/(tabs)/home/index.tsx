@@ -96,7 +96,7 @@ const Home: React.FC = () => {
         </View>
 
         <View className="flex-row justify-between">
-          <TouchableOpacity className="flex-1 bg-orange-200 p-4 rounded-lg items-center justify-center mr-2">
+          <TouchableOpacity className="flex-1 bg-orange-200 p-4 rounded-lg items-center justify-center mr-2" onPress={() => router.push('/home/prescriptions/prescriptions')}>
             <Image
               source={{
                 uri: "https://img.icons8.com/fluency/48/000000/prescription.png",

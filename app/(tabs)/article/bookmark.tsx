@@ -34,7 +34,7 @@ const BookmarksPage = () => {
     <View className="flex-1 bg-gray-100">
       {/* Header */}
       <View className="flex-row justify-between items-center px-4 py-4">
-        <Text className="text-2xl font-bold">Articles</Text>
+        <Text className="text-2xl font-bold">Bookmark Articles</Text>
 
         <FontAwesome name="bookmark" size={24} color="black" />
       </View>

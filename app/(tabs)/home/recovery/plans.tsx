@@ -16,26 +16,21 @@ const sampleRecoveryPlans = [
     id: "2",
     title: "Sports Injury Recovery",
     duration: "6 weeks",
-    imageUrl: "https://via.placeholder.com/60",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDjKtkCGlv7FSrk3bf2W9p58GRnaH1AExeWw&s",
   },
   {
     id: "3",
     title: "Chronic Pain Management",
     duration: "8 weeks",
-    imageUrl: "https://via.placeholder.com/60",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAMGOMk8fihwWTdfkCMPoaJFDHyouc7o48kg&s",
   },
   {
     id: "4",
     title: "Cardiac Recovery Plan",
     duration: "12 weeks",
-    imageUrl: "https://via.placeholder.com/60",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrrCHTCRzTP_8iymMEU7bMutCxaoA2uOcKWQ&s",
   },
-  {
-    id: "5",
-    title: "Physical Therapy for Stroke",
-    duration: "10 weeks",
-    imageUrl: "https://via.placeholder.com/60",
-  },
+
 ];
 
 const RecoveryPlansScreen = () => {
@@ -84,12 +79,7 @@ const RecoveryPlansScreen = () => {
           />
         ))}
         {/* Or if you want to add additional cards manually */}
-        <RecoveryPlanCard
-          title="Custom Plan"
-          duration="5 weeks"
-          imageUrl="https://via.placeholder.com/60"
-          onStartPress={() => handleStartButtonPress("Custom Plan")}
-        />
+
         </ScrollView>
       </View>
 
