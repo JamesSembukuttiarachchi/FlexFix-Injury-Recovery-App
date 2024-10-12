@@ -39,7 +39,7 @@ const dashboard = () => {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className="bg-orange-400 rounded-lg py-8">
+        <TouchableOpacity className="bg-orange-400 rounded-lg py-8" onPress={() => router.push("/prescriptions/")}>
           <Text className="text-center text-lg font-semibold text-black">
             Prescriptions
           </Text>

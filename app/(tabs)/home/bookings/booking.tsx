@@ -149,7 +149,7 @@ const AppointmentScreen: React.FC = () => {
           "10:00 AM",
           "10:30 AM",
           "11:00 AM",
-          "11.30 AM",
+          "11:30 AM",
           "12:00 PM",
           "12:30 PM",
           "01:00 PM",
@@ -160,7 +160,7 @@ const AppointmentScreen: React.FC = () => {
           <TouchableOpacity
             key={time}
             className={`px-3 py-2 mb-2 ${
-              selectedDate === time ? "bg-orange-400" : "bg-gray-200"
+              selectedTime === time ? "bg-orange-400" : "bg-gray-200"
             } rounded-lg`}
             onPress={() => setSelectedTime(time)}
           >

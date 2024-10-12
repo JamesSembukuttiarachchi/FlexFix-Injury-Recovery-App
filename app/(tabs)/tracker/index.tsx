@@ -39,7 +39,7 @@ const ProgressTracker = () => {
             >
               <Text className="text-xl">60%</Text>
             </ProgressCircle>
-            <Text className="mt-4 text-gray-500 text-sm">Current Task - Lorem Ipsum</Text>
+            <Text className="mt-4 text-gray-500 text-sm">Current Task - Sprained Ankle</Text>
           </View>
         </View>
       );
