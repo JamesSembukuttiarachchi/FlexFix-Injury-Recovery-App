@@ -12,6 +12,8 @@ interface ArticleCardProps {
   likes: number;
   comments: number;
   handlePress: () => void;
+  isBookmarked: boolean; // Add this line
+  toggleBookmark: () => void; // Add this line
 }
 
 const ArticleCard: React.FC<ArticleCardProps> = ({
@@ -22,7 +24,9 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   readTime,
   likes,
   comments,
-  handlePress
+  handlePress,
+  isBookmarked, // Destructure isBookmarked
+  toggleBookmark // Destructure toggleBookmarked
 }) => {
     const router = useRouter();
 
@@ -52,7 +56,14 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
           <Text className="ml-2">{comments}</Text>
         </View>
 
-        <FontAwesome name="bookmark-o" size={20} color="black" />
+        {/* Bookmark Icon */}
+        <Pressable onPress={toggleBookmark}>
+          <FontAwesome
+            name={isBookmarked ? "bookmark" : "bookmark-o"}
+            size={20}
+            color="black"
+          />
+        </Pressable>
       </View>
     </View>
   );

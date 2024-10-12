@@ -6,10 +6,12 @@ import { FontAwesome } from "@expo/vector-icons";
 
 const ArticlesPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [bookmarkedArticles, setBookmarkedArticles] = useState([]); // Track bookmarked articles
   const router = useRouter();
 
   const articles = [
     {
+      id: 1,
       title:
         "Post-Recovery Assistance: The Key to Effective Healing and Long-Term Health",
       image:
@@ -26,6 +28,7 @@ One of the primary benefits of post-recovery assistance is improving strength an
 Post-recovery assistance is also an opportunity to establish long-term healthy habits. Patients who have experienced injury often become more aware of their bodies and the need for sustained health and wellness. Through this process, they can implement new lifestyle habits, such as regular exercise, balanced nutrition, and better stress management techniques. By focusing on holistic recovery, post-recovery assistance ensures patients not only heal but also thrive. With ongoing monitoring and personalized care, post-recovery assistance provides patients with the best chance to maintain their health and avoid future complications.`,
     },
     {
+      id:2,
       title:
         "Understanding Neck Pain: Causes, Treatments, and Prevention Strategies",
       image:
@@ -48,6 +51,7 @@ Preventing neck pain involves making ergonomic adjustments to daily habits. Main
 In conclusion, neck pain is a multifaceted issue that can significantly impact one’s quality of life. By understanding its causes, exploring treatment options, and adopting preventative measures, individuals can effectively manage neck pain and improve their overall well-being. If neck pain persists or worsens, consulting a healthcare professional is essential to rule out any serious underlying conditions and to develop an appropriate treatment plan.`,
     },
     {
+      id:3,
       title: "The Rise of Telehealth: Transforming Healthcare Delivery",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvI9B2fJ9zy3Y-dCetOyfQjaCpoyNLg-5dXg&s", // Replace with your image URL
@@ -91,12 +95,36 @@ In conclusion, telehealth is transforming the way healthcare is delivered, makin
     });
   };
 
+  // Function to toggle bookmark
+  const toggleBookmark = (articleId) => {
+    if (bookmarkedArticles.some((article) => article.id === articleId)) {
+      // Remove bookmark if it already exists
+      setBookmarkedArticles((prev) =>
+        prev.filter((article) => article.id !== articleId)
+      );
+    } else {
+      // Add to bookmarks if not already there
+      const article = articles.find((art) => art.id === articleId);
+      setBookmarkedArticles((prev) => [...prev, article]);
+    }
+  };
+
+  const handleBookmarkPagePress = () => {
+    // Navigate to the bookmarks page
+    router.push({
+      pathname: "/(tabs)/article/bookmark",
+      params: { bookmarks: JSON.stringify(bookmarkedArticles) },
+    });
+  };
+
   return (
     <View className="flex-1 bg-gray-100">
       {/* Header */}
       <View className="flex-row justify-between items-center px-4 py-4">
         <Text className="text-2xl font-bold">Articles</Text>
+        <Pressable onPress={handleBookmarkPagePress}>
           <FontAwesome name="bookmark-o" size={24} color="black" />
+        </Pressable>
       </View>
 
       <TextInput
@@ -118,7 +146,9 @@ In conclusion, telehealth is transforming the way healthcare is delivered, makin
             readTime={article.readTime}
             likes={article.likes}
             comments={article.comments}
+            isBookmarked={bookmarkedArticles.some((a) => a.id === article.id)} // Check if article is bookmarked
             handlePress={() => handlePress(article)}
+            toggleBookmark={() => toggleBookmark(article.id)} // Pass toggleBookmark to the card
           />
         ))}
       </ScrollView>

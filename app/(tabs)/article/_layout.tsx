@@ -14,7 +14,7 @@ const ArticleLayout = () => {
         options={{ headerShown: false }} // Home screen
       />
       <Stack.Screen
-        name="bookmarks"
+        name="bookmark"
         options={{ headerShown: false }} // Home screen
       />
     </Stack>
